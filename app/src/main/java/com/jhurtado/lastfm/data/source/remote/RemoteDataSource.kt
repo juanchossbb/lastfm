@@ -29,9 +29,7 @@ class RemoteDataSource : DataSource {
         }
     }
 
-    override fun saveTracksList(list: List<Track>, callback: DataSource.SaveCallback) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun saveTracksList(list: Array<Track>) {}
 
     companion object {
         private var instance: RemoteDataSource? = null

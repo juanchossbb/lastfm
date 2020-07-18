@@ -24,6 +24,6 @@ interface DataSource {
     fun getArtistList(callback: LoadCallback)
     fun saveArtistList(list: List<Artist>, callback: SaveCallback)
     fun getTrackList(livedata: MutableLiveData<TracksListResponse>)
-    fun saveTracksList(list: List<Track>, callback: SaveCallback)
+    fun saveTracksList(list: Array<Track>)
 
 }

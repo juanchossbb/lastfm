@@ -8,14 +8,15 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.jhurtado.lastfm.R
 import com.jhurtado.lastfm.data.model.Track
 import com.squareup.picasso.Picasso
 
 
-class TrackListAdapter(val list: List<Track>) :
-    RecyclerView.Adapter<TrackListAdapter.TrackListViewHolder>() {
+class TrackListAdapter() :
+    PagedListAdapter<Track, TrackListAdapter.TrackListViewHolder>(Track.DIFF_CALLBACK) {
 
 
     class TrackListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -34,18 +35,18 @@ class TrackListAdapter(val list: List<Track>) :
             LayoutInflater.from(parent.context).inflate(R.layout.track_list_item, parent, false)
         )
 
-    override fun getItemCount(): Int = list.size
+    override fun getItemCount(): Int = currentList?.size ?: 0
 
     override fun onBindViewHolder(holder: TrackListViewHolder, position: Int) {
-        val track = list[position]
-        holder.nameItem.text = track.name
-        holder.durationItem.text = track.duration
-        holder.listenersItem.text = track.listeners
-        holder.artistItem.text = track.artist.name
-        Picasso.get().load(track.image[0].text).fit().into(holder.imageItem)
-        holder.artistButton.tag = track.artist.url
+        val track = getItem(position)
+        holder.nameItem.text = track?.name
+        holder.durationItem.text = track?.duration
+        holder.listenersItem.text = track?.listeners
+        holder.artistItem.text = track?.artist?.name
+        Picasso.get().load(track?.image?.get(0)?.text).fit().into(holder.imageItem)
+        holder.artistButton.tag = track?.artist?.url
         holder.artistButton.setOnClickListener(trackListClickListener)
-        holder.trackButton.tag = track.url
+        holder.trackButton.tag = track?.url
         holder.trackButton.setOnClickListener(trackListClickListener)
     }
 

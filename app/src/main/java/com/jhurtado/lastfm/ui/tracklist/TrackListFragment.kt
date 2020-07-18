@@ -2,6 +2,7 @@ package com.jhurtado.lastfm.ui.tracklist
 
 import android.os.Bundle
 import android.view.View
+import androidx.paging.PagedList
 import com.jhurtado.lastfm.R
 import com.jhurtado.lastfm.data.model.Track
 import com.jhurtado.lastfm.ui.BaseListFragment
@@ -16,12 +17,14 @@ class TrackListFragment : BaseListFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        fragmentTitle.setText(R.string.artist_list_fragment_title)
+        fragmentTitle.setText(R.string.track_list_fragment_title)
         viewModel = TrackListViewModel(this)
     }
 
-    fun showTracksList(tracksList: List<Track>) {
-        viewpager.adapter = TrackListAdapter(tracksList)
+    fun showTrackList(tracksList: PagedList<Track>) {
+        viewpager.adapter =
+            TrackListAdapter().apply { submitList(tracksList).also { notifyDataSetChanged() } }
+
     }
 
     companion object {

@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.jhurtado.lastfm.R
 
@@ -31,5 +33,7 @@ open class BaseListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         fragmentTitle = view.findViewById(R.id.tv_list_fragment_title)
         viewpager = view.findViewById(R.id.vp_list_fragment)
+        viewpager.layoutManager = LinearLayoutManager(context)
+        viewpager.addItemDecoration(DividerItemDecoration(activity, DividerItemDecoration.VERTICAL))
     }
 }

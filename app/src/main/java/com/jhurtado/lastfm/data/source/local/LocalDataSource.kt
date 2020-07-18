@@ -23,20 +23,17 @@ class LocalDataSource  : DataSource {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun getTrackList(livedata: MutableLiveData<TracksListResponse>) {
-        livedata.postValue(database.tracksDao().getTracks())
-    }
+    override fun getTrackList(livedata: MutableLiveData<TracksListResponse>) {}
 
-
-    override fun saveTracksList(list: List<Track>, callback: DataSource.SaveCallback) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun saveTracksList(list: Array<Track>) {
+        database.tracksDao().insertTracks(list)
     }
 
 
     companion object {
         private var instance: LocalDataSource? = null
-        fun getInstance() : LocalDataSource{
-            if(instance == null){
+        fun getInstance(): LocalDataSource {
+            if (instance == null) {
                 instance = LocalDataSource()
             }
             return instance!!

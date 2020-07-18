@@ -1,6 +1,5 @@
 package com.jhurtado.lastfm.utils
 
-import android.app.Activity
 import android.os.Build
 import androidx.room.Room
 import com.jhurtado.lastfm.ApplicationDelegate
@@ -16,8 +15,8 @@ import com.jhurtado.lastfm.data.source.remote.RemoteDataSource
  * Date: 17/07/20
  * LasfFM test for Valid.com
  */
-fun provideDataRepository(activity: Activity): DataRepository {
-    return DataRepository.getInstance(provideLocalDataSource(), provideRemoteDataSource(), activity)
+fun provideDataRepository(): DataRepository {
+    return DataRepository.getInstance(provideLocalDataSource(), provideRemoteDataSource())
 }
 
 fun provideLocalDataSource(): DataSource = LocalDataSource.getInstance()

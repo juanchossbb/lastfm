@@ -1,6 +1,5 @@
 package com.jhurtado.lastfm.data.source
 
-import android.app.Activity
 import androidx.lifecycle.MutableLiveData
 import com.jhurtado.lastfm.data.model.Artist
 import com.jhurtado.lastfm.data.model.Track
@@ -14,9 +13,8 @@ import kotlinx.coroutines.launch
  * LasfFM test for Valid.com
  */
 class DataRepository private constructor(
-    private val localDataRepository: DataSource,
-    private val remoteDatasource: DataSource,
-    private val activity: Activity
+    private val localDataSource: DataSource,
+    private val remoteDatasource: DataSource
 ) : DataSource {
     override fun getArtistList(callback: DataSource.LoadCallback) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
@@ -27,35 +25,31 @@ class DataRepository private constructor(
     }
 
     override fun getTrackList(livedata: MutableLiveData<TracksListResponse>) {
-        val localobserver = MutableLiveData<TracksListResponse>()
-        localobserver.observeForever {
-            if (it == null)
-                GlobalScope.launch {
-                    remoteDatasource.getTrackList(livedata)
-                }
-            else
-                livedata.postValue(it)
+        val observer = MutableLiveData<TracksListResponse>()
+        observer.observeForever {
+            GlobalScope.launch {
+                saveTracksList(it.tracks.track.toTypedArray())
+            }
+            livedata.postValue(it)
         }
         GlobalScope.launch {
-            localDataRepository.getTrackList(localobserver)
+            remoteDatasource.getTrackList(observer)
         }
-
     }
 
 
-    override fun saveTracksList(list: List<Track>, callback: DataSource.SaveCallback) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun saveTracksList(list: Array<Track>) {
+        localDataSource.saveTracksList(list)
     }
 
     companion object {
         private var instance: DataRepository? = null
         fun getInstance(
             localDataSource: DataSource,
-            remoteDatasource: DataSource,
-            view: Activity
+            remoteDatasource: DataSource
         ): DataRepository {
             if (instance == null) {
-                instance = DataRepository(localDataSource, remoteDatasource, view)
+                instance = DataRepository(localDataSource, remoteDatasource)
             }
             return instance!!
         }

@@ -6,14 +6,14 @@ import com.google.gson.annotations.SerializedName
 import com.jhurtado.lastfm.data.model.Attributes
 import com.jhurtado.lastfm.data.model.Track
 
-@Entity(tableName = "tracks")
+@Entity
 class TracksListResponse {
     @PrimaryKey
     lateinit var tracks: TracksResponseObject
 }
 
 class TracksResponseObject {
-    lateinit var track: Array<Track>
+    lateinit var track: MutableList<Track>
 
     @SerializedName("@attr")
     lateinit var attributes: Attributes
