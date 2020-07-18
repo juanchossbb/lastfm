@@ -1,4 +1,4 @@
-package com.jhurtado.lastfm.data.source.local
+package com.jhurtado.lastfm.data.source
 
 import androidx.paging.DataSource
 import com.jhurtado.lastfm.data.model.Track

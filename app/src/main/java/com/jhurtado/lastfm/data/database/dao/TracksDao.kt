@@ -9,8 +9,8 @@ import com.jhurtado.lastfm.data.model.Track
 @Dao
 interface TracksDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insertTracks(tracks: Array<Track>)
+    fun insertTracks(tracks: List<Track>)
 
     @Query("SELECT * FROM tracks limit :pagesize offset :initial")
-    fun getTracks(pagesize: Int, initial: Int): Array<Track>
+    fun getTracks(pagesize: Int, initial: Int): List<Track>
 }

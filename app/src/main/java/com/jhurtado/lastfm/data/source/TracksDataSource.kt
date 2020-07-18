@@ -1,6 +1,8 @@
-package com.jhurtado.lastfm.data.source.local
+package com.jhurtado.lastfm.data.source
 
 import androidx.paging.PositionalDataSource
+import com.jhurtado.lastfm.ApplicationDelegate
+import com.jhurtado.lastfm.data.RetrofitFactory
 import com.jhurtado.lastfm.data.model.Track
 import com.jhurtado.lastfm.utils.provideAppDatabase
 
@@ -12,7 +14,7 @@ import com.jhurtado.lastfm.utils.provideAppDatabase
 
 class TracksDataSource : PositionalDataSource<Track>() {
     val database = provideAppDatabase()
-
+    val service by lazy { RetrofitFactory.getRetrofitService() }
 
     override fun loadRange(
         params: LoadRangeParams,
@@ -25,11 +27,15 @@ class TracksDataSource : PositionalDataSource<Track>() {
         params: LoadInitialParams,
         callback: LoadInitialCallback<Track>
     ) {
-        callback.onResult(loadRangeInternal(0, params.pageSize), 0, params.requestedLoadSize)
+        callback.onResult(loadRangeInternal(0, params.pageSize), 0)
     }
 
     private fun loadRangeInternal(start: Int, count: Int): List<Track> {
-
-        return database.tracksDao().getTracks(count, start).toList()
+        if (ApplicationDelegate.connectedToInternet()) {
+            database.tracksDao().insertTracks(
+                service.getTracks((start / count) + 1, count).blockingFirst().tracks.track
+            )
+        }
+        return database.tracksDao().getTracks(count, start)
     }
 }

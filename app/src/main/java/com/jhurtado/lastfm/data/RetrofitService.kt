@@ -10,5 +10,9 @@ private const val URL = "2.0/?country=colombia&api_key=829751643419a7128b7ada50d
 interface RetrofitService {
 
     @GET(URL)
-    fun getTracks(@Query("method") method: String = "geo.gettoptracks"): Observable<TracksListResponse>
+    fun getTracks(
+        @Query("page") page: Int,
+        @Query("limit") limit: Int,
+        @Query("method") method: String = "geo.gettoptracks"
+    ): Observable<TracksListResponse>
 }

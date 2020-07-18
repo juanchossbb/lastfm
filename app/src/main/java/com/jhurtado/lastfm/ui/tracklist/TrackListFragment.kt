@@ -19,12 +19,11 @@ class TrackListFragment : BaseListFragment() {
         super.onViewCreated(view, savedInstanceState)
         fragmentTitle.setText(R.string.track_list_fragment_title)
         viewModel = TrackListViewModel(this)
+        viewpager.adapter = TrackListAdapter().apply { submitList(null) }
     }
 
     fun showTrackList(tracksList: PagedList<Track>) {
-        viewpager.adapter =
-            TrackListAdapter().apply { submitList(tracksList).also { notifyDataSetChanged() } }
-
+        viewpager.adapter = TrackListAdapter().apply { submitList(tracksList) }
     }
 
     companion object {
