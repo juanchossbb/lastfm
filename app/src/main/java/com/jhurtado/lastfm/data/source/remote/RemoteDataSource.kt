@@ -1,7 +1,10 @@
 package com.jhurtado.lastfm.data.source.remote
 
+import androidx.lifecycle.MutableLiveData
+import com.jhurtado.lastfm.data.RetrofitFactory
 import com.jhurtado.lastfm.data.model.Artist
 import com.jhurtado.lastfm.data.model.Track
+import com.jhurtado.lastfm.data.response.TracksListResponse
 import com.jhurtado.lastfm.data.source.DataSource
 
 /**
@@ -10,7 +13,8 @@ import com.jhurtado.lastfm.data.source.DataSource
  * LasfFM test for Valid.com
  */
 
-class RemoteDataSource : DataSource{
+class RemoteDataSource : DataSource {
+    val service by lazy { RetrofitFactory.getRetrofitService() }
     override fun getArtistList(callback: DataSource.LoadCallback) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
@@ -19,18 +23,20 @@ class RemoteDataSource : DataSource{
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun getTrackList(callback: DataSource.LoadCallback) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun getTrackList(liveData: MutableLiveData<TracksListResponse>) {
+        service.getTracks().subscribe {
+            liveData.postValue(it)
+        }
     }
 
     override fun saveTracksList(list: List<Track>, callback: DataSource.SaveCallback) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    companion object{
-        private var instance : RemoteDataSource? = null
-        fun getInstance() : RemoteDataSource {
-            if(instance == null){
+    companion object {
+        private var instance: RemoteDataSource? = null
+        fun getInstance(): RemoteDataSource {
+            if (instance == null) {
                 instance = RemoteDataSource()
             }
             return instance!!

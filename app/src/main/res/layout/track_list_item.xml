@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/iv_track_item"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_track_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Tituylo de la cancion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/iv_track_item"
+        app:layout_constraintTop_toTopOf="@id/iv_track_item" />
+
+    <TextView
+        android:id="@+id/tv_track_duration_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Duration:"
+        app:layout_constraintEnd_toStartOf="@id/tv_track_duration_value"
+        app:layout_constraintStart_toStartOf="@id/tv_track_name"
+        app:layout_constraintTop_toBottomOf="@id/tv_track_name" />
+
+    <TextView
+        android:id="@+id/tv_track_duration_value"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="1641651"
+        app:layout_constraintEnd_toStartOf="@id/tv_track_listeners_title"
+        app:layout_constraintStart_toEndOf="@id/tv_track_duration_title"
+        app:layout_constraintTop_toTopOf="@id/tv_track_duration_title" />
+
+    <TextView
+        android:id="@+id/tv_track_listeners_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Listeners:"
+        app:layout_constraintEnd_toStartOf="@id/tv_track_listeners_value"
+        app:layout_constraintStart_toEndOf="@id/tv_track_duration_value"
+        app:layout_constraintTop_toTopOf="@id/tv_track_duration_title" />
+
+    <TextView
+        android:id="@+id/tv_track_listeners_value"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="1641651"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_track_listeners_title"
+        app:layout_constraintTop_toTopOf="@id/tv_track_listeners_title" />
+
+    <TextView
+        android:id="@+id/tv_track_artist_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Artist: "
+        app:layout_constraintStart_toEndOf="@id/iv_track_item"
+        app:layout_constraintTop_toBottomOf="@id/tv_track_listeners_title" />
+
+    <TextView
+        android:id="@+id/tv_track_artist_value"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Franco de vita"
+        app:layout_constraintStart_toEndOf="@id/tv_track_artist_title"
+        app:layout_constraintTop_toTopOf="@id/tv_track_artist_title" />
+
+    <Button
+        android:id="@+id/btn_track_artist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_track_artist_value"
+        app:layout_constraintTop_toTopOf="@id/tv_track_artist_value" />
+
+    <Button
+        android:id="@+id/btn_track_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View Details"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/iv_track_item"
+        app:layout_constraintTop_toBottomOf="@id/tv_track_artist_title" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

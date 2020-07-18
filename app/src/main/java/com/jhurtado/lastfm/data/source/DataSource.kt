@@ -1,8 +1,10 @@
 package com.jhurtado.lastfm.data.source
 
+import androidx.lifecycle.MutableLiveData
 import com.jhurtado.lastfm.data.model.Artist
 import com.jhurtado.lastfm.data.model.BaseObject
 import com.jhurtado.lastfm.data.model.Track
+import com.jhurtado.lastfm.data.response.TracksListResponse
 
 /**
  * @author jhurtado
@@ -21,7 +23,7 @@ interface DataSource {
 
     fun getArtistList(callback: LoadCallback)
     fun saveArtistList(list: List<Artist>, callback: SaveCallback)
-    fun getTrackList(callback: LoadCallback)
+    fun getTrackList(livedata: MutableLiveData<TracksListResponse>)
     fun saveTracksList(list: List<Track>, callback: SaveCallback)
 
 }
