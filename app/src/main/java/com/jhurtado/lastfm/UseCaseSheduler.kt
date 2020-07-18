@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit
 
 /**
  * @author jhurtado
- * Date: 22/04/20
+ * Date: 17/07/20
  * LasfFM test for Valid.com
  *
  * source https://www.toptal.com/android/android-apps-mvvm-with-clean-architecture

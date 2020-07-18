@@ -4,7 +4,7 @@ import androidx.fragment.app.Fragment
 
 /**
  * @author jhurtado
- * Date: 23/04/20
+ * Date: 17/07/20
  * LasfFM test for Valid.com
  */
 open class BaseListFragment : Fragment()

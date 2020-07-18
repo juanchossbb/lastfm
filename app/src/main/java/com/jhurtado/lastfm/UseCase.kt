@@ -2,7 +2,7 @@ package com.jhurtado.lastfm
 
 /**
  * @author jhurtado
- * Date: 22/04/20
+ * Date: 17/07/20
  * LasfFM test for Valid.com
  */
 abstract class UseCase<Q : UseCase.RequestValues, P : UseCase.ResponseValue> {

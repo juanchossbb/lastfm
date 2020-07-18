@@ -6,7 +6,7 @@ import com.jhurtado.lastfm.ui.artistlist.domain.SaveArtistList
 
 /**
  * @author jhurtado
- * Date: 22/04/20
+ * Date: 17/07/20
  * LasfFM test for Valid.com
  */
 class ArtistListViewModel (val useCaseHandler: UseCaseHandler,

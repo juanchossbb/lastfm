@@ -3,11 +3,10 @@ package com.jhurtado.lastfm.data.source.remote
 import com.jhurtado.lastfm.data.model.Artist
 import com.jhurtado.lastfm.data.model.Track
 import com.jhurtado.lastfm.data.source.DataSource
-import com.jhurtado.lastfm.data.source.local.LocalDataSource
 
 /**
  * @author jhurtado
- * Date: 22/04/20
+ * Date: 17/07/20
  * LasfFM test for Valid.com
  */
 
