@@ -12,7 +12,10 @@ import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.jhurtado.lastfm.R
 import com.jhurtado.lastfm.data.model.Track
+import com.jhurtado.lastfm.utils.PicassoCircleTransform
 import com.squareup.picasso.Picasso
+import java.text.NumberFormat
+import java.util.*
 
 
 class TrackListAdapter() :
@@ -40,10 +43,14 @@ class TrackListAdapter() :
     override fun onBindViewHolder(holder: TrackListViewHolder, position: Int) {
         val track = getItem(position)
         holder.nameItem.text = track?.name
-        holder.durationItem.text = track?.duration
-        holder.listenersItem.text = track?.listeners
+        val sec: Int = (track?.duration?.toInt() ?: 0) % 60
+        val min: Int = (track?.duration?.toInt() ?: 0) / 60 % 60
+        holder.durationItem.text = "$min:$sec"
+        holder.listenersItem.text =
+            NumberFormat.getNumberInstance(Locale.US).format(track?.listeners?.toInt())
         holder.artistItem.text = track?.artist?.name
-        Picasso.get().load(track?.image?.get(0)?.text).fit().into(holder.imageItem)
+        Picasso.get().load(track?.image?.get(0)?.text).transform(PicassoCircleTransform()).fit()
+            .into(holder.imageItem)
         holder.artistButton.tag = track?.artist?.url
         holder.artistButton.setOnClickListener(trackListClickListener)
         holder.trackButton.tag = track?.url
