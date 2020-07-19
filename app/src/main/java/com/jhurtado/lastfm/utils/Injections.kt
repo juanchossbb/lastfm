@@ -3,6 +3,8 @@ package com.jhurtado.lastfm.utils
 import android.os.Build
 import androidx.room.Room
 import com.jhurtado.lastfm.ApplicationDelegate
+import com.jhurtado.lastfm.data.RetrofitFactory
+import com.jhurtado.lastfm.data.RetrofitService
 import com.jhurtado.lastfm.data.database.AppDatabase
 
 /**
@@ -16,4 +18,6 @@ fun provideAppDatabase(): AppDatabase = Room.databaseBuilder(
     AppDatabase::class.java,
     Build.DEVICE
 ).build()
+
+fun provideRetrofitService(): RetrofitService = RetrofitFactory.getRetrofitService()
 

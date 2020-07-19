@@ -21,7 +21,6 @@ class TrackListFragment : BaseListFragment() {
         super.onViewCreated(view, savedInstanceState)
         fragmentTitle.setText(R.string.track_list_fragment_title)
         viewModel = TrackListViewModel(this)
-        viewpager.adapter = TrackListAdapter().apply { submitList(null) }
 
         (activity as ListTabActivity).searchLiveData.observe(this, Observer {
             (viewpager.adapter as TrackListAdapter).submitList(null)

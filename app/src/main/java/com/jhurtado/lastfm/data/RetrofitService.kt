@@ -6,13 +6,13 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 private const val URL = "2.0/?country=colombia&api_key=829751643419a7128b7ada50de590067&format=json"
-
+private const val TRACKS_METHOD = "geo.gettoptracks"
 interface RetrofitService {
 
     @GET(URL)
     fun getTracks(
         @Query("page") page: Int,
         @Query("limit") limit: Int,
-        @Query("method") method: String = "geo.gettoptracks"
+        @Query("method") method: String = TRACKS_METHOD
     ): Observable<TracksListResponse>
 }

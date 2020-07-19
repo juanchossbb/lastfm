@@ -2,9 +2,9 @@ package com.jhurtado.lastfm.data.source
 
 import androidx.paging.PositionalDataSource
 import com.jhurtado.lastfm.ApplicationDelegate
-import com.jhurtado.lastfm.data.RetrofitFactory
 import com.jhurtado.lastfm.data.model.Track
 import com.jhurtado.lastfm.utils.provideAppDatabase
+import com.jhurtado.lastfm.utils.provideRetrofitService
 
 /**
  * @author jhurtado
@@ -13,8 +13,8 @@ import com.jhurtado.lastfm.utils.provideAppDatabase
  */
 
 class TracksDataSource : PositionalDataSource<Track>() {
-    val database = provideAppDatabase()
-    val service by lazy { RetrofitFactory.getRetrofitService() }
+    private val database = provideAppDatabase()
+    private val service = provideRetrofitService()
     var searchQuery = ""
 
     override fun loadRange(

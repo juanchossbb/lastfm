@@ -12,13 +12,10 @@ import androidx.room.PrimaryKey
 @Entity
 open class BaseObject() {
     lateinit var name: String
-
-
     @PrimaryKey
     lateinit var mbid : String
     lateinit var url: String
     lateinit var listeners: String
-
     @Ignore
     lateinit var streamabale: Integer
 }
