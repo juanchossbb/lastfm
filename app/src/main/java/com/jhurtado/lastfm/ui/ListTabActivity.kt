@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
+import androidx.annotation.VisibleForTesting
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
@@ -80,12 +81,14 @@ class ListTabActivity : AppCompatActivity() {
         }
     }
 
-    private fun searchAction(query: String) {
+    @VisibleForTesting
+    fun searchAction(query: String) {
         searchLiveData.postValue(query)
         viewpager.adapter?.notifyDataSetChanged()
     }
 
-    private fun setupViewpager() {
+    @VisibleForTesting
+    fun setupViewpager() {
         val fragmentList = listOf<Fragment>(TrackListFragment.instance, ArtistListFragment.instance)
         viewpager.adapter = TablListAdapter(supportFragmentManager, fragmentList)
     }
@@ -97,8 +100,8 @@ class ListTabActivity : AppCompatActivity() {
         override fun getCount(): Int = fragmentList.size
         override fun getPageTitle(position: Int): CharSequence? {
             return when (position) {
-                0 -> "Track"
-                1 -> "Artist"
+                0 -> "Tracks"
+                1 -> "Artists"
                 else -> ""
             }
         }
