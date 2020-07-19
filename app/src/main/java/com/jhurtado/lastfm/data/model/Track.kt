@@ -13,7 +13,6 @@ import com.google.gson.Gson
 class Track : BaseObject() {
     lateinit var duration: String
     lateinit var artist: Artist
-    lateinit var image: Array<Image>
 
     companion object {
         private val gson by lazy { Gson() }

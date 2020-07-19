@@ -9,9 +9,10 @@ import com.jhurtado.lastfm.data.model.Track
 import com.jhurtado.lastfm.data.source.TracksDatasourceFactory
 
 private const val PAGE_SIZE = 50
-class TrackListViewModel(val fragment: TrackListFragment) : ViewModel() {
+class TrackListViewModel(private val fragment: TrackListFragment) : ViewModel() {
     lateinit var trackList: LiveData<PagedList<Track>>
     val factory by lazy { TracksDatasourceFactory() }
+
     init {
         loadTracksFromDatabase()
     }
@@ -23,7 +24,7 @@ class TrackListViewModel(val fragment: TrackListFragment) : ViewModel() {
             .setEnablePlaceholders(false)
             .build()
         trackList = LivePagedListBuilder(factory, config).build()
-        trackList.observe(fragment.activity!!, Observer {
+        trackList.observe(fragment, Observer {
             fragment.showTrackList(it)
         })
     }
