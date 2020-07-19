@@ -8,4 +8,5 @@
     <string name="artists">Artists</string>
     <string name="view_details">View Details</string>
     <string name="view_artist">View Artist</string>
+    <string name="search_hint">Search</string>
 </resources>

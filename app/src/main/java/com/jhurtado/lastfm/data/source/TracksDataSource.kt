@@ -15,6 +15,7 @@ import com.jhurtado.lastfm.utils.provideAppDatabase
 class TracksDataSource : PositionalDataSource<Track>() {
     val database = provideAppDatabase()
     val service by lazy { RetrofitFactory.getRetrofitService() }
+    var searchQuery = ""
 
     override fun loadRange(
         params: LoadRangeParams,
@@ -36,6 +37,6 @@ class TracksDataSource : PositionalDataSource<Track>() {
                 service.getTracks((start / count) + 1, count).blockingFirst().tracks.track
             )
         }
-        return database.tracksDao().getTracks(count, start)
+        return database.tracksDao().getTracks(count, start, "%$searchQuery%")
     }
 }

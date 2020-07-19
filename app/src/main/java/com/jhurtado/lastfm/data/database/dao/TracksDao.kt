@@ -11,6 +11,6 @@ interface TracksDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertTracks(tracks: List<Track>)
 
-    @Query("SELECT * FROM tracks limit :pagesize offset :initial")
-    fun getTracks(pagesize: Int, initial: Int): List<Track>
+    @Query("SELECT * FROM tracks where name like :searchQuery  limit :pagesize offset :initial")
+    fun getTracks(pagesize: Int, initial: Int, searchQuery: String = ""): List<Track>
 }

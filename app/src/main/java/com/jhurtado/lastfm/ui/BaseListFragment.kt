@@ -17,11 +17,12 @@ import com.jhurtado.lastfm.R
  * Date: 17/07/20
  * LasfFM test for Valid.com
  */
-open class BaseListFragment : Fragment() {
+abstract class BaseListFragment : Fragment() {
 
     lateinit var fragmentTitle: TextView
     lateinit var viewpager: RecyclerView
     lateinit var viewModel: ViewModel
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,4 +37,5 @@ open class BaseListFragment : Fragment() {
         viewpager.layoutManager = LinearLayoutManager(context)
         viewpager.addItemDecoration(DividerItemDecoration(activity, DividerItemDecoration.VERTICAL))
     }
+
 }

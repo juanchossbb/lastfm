@@ -2,10 +2,12 @@ package com.jhurtado.lastfm.ui.tracklist
 
 import android.os.Bundle
 import android.view.View
+import androidx.lifecycle.Observer
 import androidx.paging.PagedList
 import com.jhurtado.lastfm.R
 import com.jhurtado.lastfm.data.model.Track
 import com.jhurtado.lastfm.ui.BaseListFragment
+import com.jhurtado.lastfm.ui.ListTabActivity
 
 /**
  * @author jhurtado
@@ -20,6 +22,11 @@ class TrackListFragment : BaseListFragment() {
         fragmentTitle.setText(R.string.track_list_fragment_title)
         viewModel = TrackListViewModel(this)
         viewpager.adapter = TrackListAdapter().apply { submitList(null) }
+
+        (activity as ListTabActivity).searchLiveData.observe(this, Observer {
+            (viewpager.adapter as TrackListAdapter).submitList(null)
+            (viewModel as TrackListViewModel).searchTracks(it)
+        })
     }
 
     fun showTrackList(tracksList: PagedList<Track>) {
