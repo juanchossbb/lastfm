@@ -9,7 +9,6 @@ import okhttp3.OkHttpClient
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import org.junit.After
-import org.junit.Before
 import org.junit.Test
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -20,8 +19,7 @@ class RetrofitServiceTest : BaseUnitTest() {
     val webMockServer = MockWebServer()
     lateinit var service: RetrofitService
 
-    @Before
-    fun setUp() {
+    override fun setUp() {
         webMockServer.start()
         service = Retrofit.Builder()
             .baseUrl(webMockServer.url("/"))
