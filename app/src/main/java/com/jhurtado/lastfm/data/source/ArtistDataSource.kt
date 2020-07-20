@@ -22,7 +22,9 @@ class ArtistDataSource : PositionalDataSource<Artist>() {
     private fun loadRangeInternal(start: Int, count: Int): List<Artist> {
         if (ApplicationDelegate.connectedToInternet()) {
             database.artistDao().insertArtist(
-                service.getArtists((start / count) + 1, count).blockingFirst().topartists.artist
+                service.getArtists((start / count) + 1, count).doOnError {
+                    it.printStackTrace()
+                }.blockingFirst().topartists.artist
             )
         }
         return database.artistDao().getArtists(count, start, "%$searchQuery%")

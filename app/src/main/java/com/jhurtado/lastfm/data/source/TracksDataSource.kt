@@ -34,7 +34,9 @@ class TracksDataSource : PositionalDataSource<Track>() {
     private fun loadRangeInternal(start: Int, count: Int): List<Track> {
         if (ApplicationDelegate.connectedToInternet()) {
             database.tracksDao().insertTracks(
-                service.getTracks((start / count) + 1, count).blockingFirst().tracks.track
+                service.getTracks((start / count) + 1, count).doOnError {
+                    it.printStackTrace()
+                }.blockingFirst().tracks.track
             )
         }
         return database.tracksDao().getTracks(count, start, "%$searchQuery%")

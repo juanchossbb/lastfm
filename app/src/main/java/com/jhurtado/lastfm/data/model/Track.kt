@@ -10,10 +10,7 @@ import com.google.gson.Gson
  * Time: 10:03 PM
  */
 @Entity(tableName = "tracks")
-class Track : BaseObject() {
-    lateinit var duration: String
-    lateinit var artist: Artist
-
+class Track(var duration: String, var artist: Artist) : BaseObject() {
     companion object {
         private val gson by lazy { Gson() }
         val DIFF_CALLBACK: DiffUtil.ItemCallback<Track> = object : DiffUtil.ItemCallback<Track>() {
