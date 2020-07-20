@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#40000000"
+    android:padding="5dp">
+
+    <ImageView
+        android:id="@+id/iv_artist_item"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_artist_name"
+        style="@style/TextStyle.Title"
+        app:layout_constraintEnd_toStartOf="@id/btn_artist_details"
+        app:layout_constraintStart_toEndOf="@id/iv_artist_item"
+        app:layout_constraintTop_toTopOf="@id/iv_artist_item" />
+
+
+    <TextView
+        android:id="@+id/tv_artist_listeners_title"
+        style="@style/TextStyle.Subtitle"
+        android:text="@string/listeners"
+        app:layout_constraintEnd_toStartOf="@id/tv_artist_listeners_value"
+        app:layout_constraintStart_toEndOf="@id/iv_artist_item"
+        app:layout_constraintTop_toBottomOf="@id/tv_artist_name" />
+
+    <TextView
+        android:id="@+id/tv_artist_listeners_value"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="1641651"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_artist_listeners_title"
+        app:layout_constraintTop_toTopOf="@id/tv_artist_listeners_title" />
+
+    <Button
+        android:id="@+id/btn_artist_details"
+        style="@style/ButtonStyle.Primary"
+        android:text="@string/view_details"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_artist_name"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

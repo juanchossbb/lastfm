@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#40000000"
+    android:padding="5dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/iv_track_item"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_track_name"
+        style="@style/TextStyle.Title"
+        app:layout_constraintEnd_toStartOf="@id/btn_track_details"
+        app:layout_constraintStart_toEndOf="@id/iv_track_item"
+        app:layout_constraintTop_toTopOf="@id/iv_track_item" />
+
+    <TextView
+        android:id="@+id/tv_track_duration_title"
+        style="@style/TextStyle.Subtitle"
+        android:text="@string/duration"
+        app:layout_constraintEnd_toStartOf="@id/tv_track_duration_value"
+        app:layout_constraintStart_toStartOf="@id/tv_track_name"
+        app:layout_constraintTop_toBottomOf="@id/btn_track_details" />
+
+    <TextView
+        android:id="@+id/tv_track_duration_value"
+        style="@style/TextStyle.Content"
+        app:layout_constraintEnd_toStartOf="@id/tv_track_listeners_title"
+        app:layout_constraintStart_toEndOf="@id/tv_track_duration_title"
+        app:layout_constraintTop_toTopOf="@id/tv_track_duration_title" />
+
+    <TextView
+        android:id="@+id/tv_track_listeners_title"
+        style="@style/TextStyle.Subtitle"
+        android:text="@string/listeners"
+        app:layout_constraintEnd_toStartOf="@id/tv_track_listeners_value"
+        app:layout_constraintStart_toEndOf="@id/tv_track_duration_value"
+        app:layout_constraintTop_toTopOf="@id/tv_track_duration_title" />
+
+    <TextView
+        android:id="@+id/tv_track_listeners_value"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="1641651"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_track_listeners_title"
+        app:layout_constraintTop_toTopOf="@id/tv_track_listeners_title" />
+
+    <TextView
+        android:id="@+id/tv_track_artist_title"
+        style="@style/TextStyle.Subtitle"
+        android:text="@string/artists"
+        app:layout_constraintStart_toEndOf="@id/iv_track_item"
+        app:layout_constraintBottom_toBottomOf="@id/btn_track_artist"
+        app:layout_constraintTop_toBottomOf="@id/tv_track_listeners_title" />
+
+    <TextView
+        android:id="@+id/tv_track_artist_value"
+        style="@style/TextStyle.Content"
+        app:layout_constraintBottom_toBottomOf="@id/btn_track_artist"
+        app:layout_constraintEnd_toStartOf="@id/btn_track_artist"
+        app:layout_constraintStart_toEndOf="@id/tv_track_duration_title"
+        app:layout_constraintTop_toTopOf="@id/tv_track_artist_title" />
+
+    <Button
+        android:id="@+id/btn_track_artist"
+        style="@style/ButtonStyle.Accent"
+        android:text="@string/view_artist"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_track_artist_value"
+        app:layout_constraintTop_toBottomOf="@id/tv_track_listeners_value" />
+
+    <Button
+        android:id="@+id/btn_track_details"
+        style="@style/ButtonStyle.Primary"
+        android:text="@string/view_details"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_track_name"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

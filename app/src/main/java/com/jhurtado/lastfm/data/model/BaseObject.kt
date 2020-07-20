@@ -1,14 +1,25 @@
 package com.jhurtado.lastfm.data.model
 
+import androidx.room.Entity
+import androidx.room.Ignore
+import androidx.room.PrimaryKey
+
 /**
  * @author jhurtado
- * Date: 22/04/20
+ * Date: 17/07/20
  * LasfFM test for Valid.com
  */
+@Entity
+open class BaseObject() {
+    lateinit var name: String
 
-open class BaseObject(){
-    lateinit var name : String
-    lateinit var mbid : String
-    lateinit var url : String
-    lateinit var streamabale : Integer
+    @PrimaryKey
+    lateinit var mbid: String
+    lateinit var url: String
+    lateinit var listeners: String
+
+    @Ignore
+    lateinit var streamabale: Integer
+    lateinit var image: Array<Image>
+
 }

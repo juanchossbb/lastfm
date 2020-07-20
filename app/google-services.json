@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "743682797863",
+    "firebase_url": "https://lastfm-1e755.firebaseio.com",
+    "project_id": "lastfm-1e755",
+    "storage_bucket": "lastfm-1e755.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:743682797863:android:26b3731f9dfc2b26173902",
+        "android_client_info": {
+          "package_name": "com.jhurtado.lastfm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "743682797863-ojfcp0hosddpnv5dkr4qt6aoq8tf7k5p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTNJ5HXIdYaQM18MqcmlGNimkwnl41Gfo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "743682797863-ojfcp0hosddpnv5dkr4qt6aoq8tf7k5p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
