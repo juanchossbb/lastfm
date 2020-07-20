@@ -22,14 +22,14 @@ class TrackListFragment : BaseListFragment() {
         fragmentTitle.setText(R.string.track_list_fragment_title)
         viewModel = TrackListViewModel(this)
 
-        (activity as ListTabActivity).searchLiveData.observe(this, Observer {
-            (viewpager.adapter as TrackListAdapter).submitList(null)
+        (activity as? ListTabActivity)?.searchLiveData?.observe(viewLifecycleOwner, Observer {
+            (recyclerview.adapter as TrackListAdapter).submitList(null)
             (viewModel as TrackListViewModel).searchTracks(it)
         })
     }
 
     fun showTrackList(tracksList: PagedList<Track>) {
-        viewpager.adapter = TrackListAdapter().apply { submitList(tracksList) }
+        recyclerview.adapter = TrackListAdapter().apply { submitList(tracksList) }
     }
 
     companion object {

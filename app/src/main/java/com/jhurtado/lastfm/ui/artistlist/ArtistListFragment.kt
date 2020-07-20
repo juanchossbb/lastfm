@@ -18,17 +18,17 @@ import com.jhurtado.lastfm.ui.ListTabActivity
 class ArtistListFragment : BaseListFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        fragmentTitle.setText(R.string.track_list_fragment_title)
+        fragmentTitle.setText(R.string.artist_list_fragment_title)
         viewModel = ArtistListViewModel(this)
 
-        (activity as ListTabActivity).searchLiveData.observe(this, Observer {
-            (viewpager.adapter as ArtistListAdapter).submitList(null)
+        (activity as? ListTabActivity)?.searchLiveData?.observe(viewLifecycleOwner, Observer {
+            (recyclerview.adapter as ArtistListAdapter).submitList(null)
             (viewModel as ArtistListViewModel).searchArtists(it)
         })
     }
 
     fun showArtistList(artistlist: PagedList<Artist>) {
-        viewpager.adapter = ArtistListAdapter().apply { submitList(artistlist) }
+        recyclerview.adapter = ArtistListAdapter().apply { submitList(artistlist) }
     }
 
     companion object {

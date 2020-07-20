@@ -23,7 +23,7 @@ import com.jhurtado.lastfm.ui.tracklist.TrackListFragment
  * Date: 17/07/20
  * LasfFM test for Valid.com
  */
-class ListTabActivity : AppCompatActivity() {
+open class ListTabActivity : AppCompatActivity() {
     lateinit var viewpager: ViewPager
     lateinit var tabLayout: TabLayout
     lateinit var searchLiveData: MutableLiveData<String>

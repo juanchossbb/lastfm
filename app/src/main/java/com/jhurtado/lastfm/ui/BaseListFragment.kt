@@ -20,7 +20,7 @@ import com.jhurtado.lastfm.R
 abstract class BaseListFragment : Fragment() {
 
     lateinit var fragmentTitle: TextView
-    lateinit var viewpager: RecyclerView
+    lateinit var recyclerview: RecyclerView
     lateinit var viewModel: ViewModel
 
 
@@ -33,9 +33,14 @@ abstract class BaseListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         fragmentTitle = view.findViewById(R.id.tv_list_fragment_title)
-        viewpager = view.findViewById(R.id.vp_list_fragment)
-        viewpager.layoutManager = LinearLayoutManager(context)
-        viewpager.addItemDecoration(DividerItemDecoration(activity, DividerItemDecoration.VERTICAL))
+        recyclerview = view.findViewById(R.id.vp_list_fragment)
+        recyclerview.layoutManager = LinearLayoutManager(context)
+        recyclerview.addItemDecoration(
+            DividerItemDecoration(
+                activity,
+                DividerItemDecoration.VERTICAL
+            )
+        )
     }
 
 }
