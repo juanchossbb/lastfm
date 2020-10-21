@@ -15,7 +15,7 @@ import com.jhurtado.lastfm.data.source.ArtistDataSourceFactory
  */
 private const val PAGE_SIZE = 50
 
-class ArtistListViewModel(private val fragment: ArtistListFragment) : ViewModel() {
+class ArtistListViewModel() : ViewModel() {
     lateinit var artistList: LiveData<PagedList<Artist>>
     val factory by lazy { ArtistDataSourceFactory() }
 
@@ -30,9 +30,6 @@ class ArtistListViewModel(private val fragment: ArtistListFragment) : ViewModel(
             .setEnablePlaceholders(false)
             .build()
         artistList = LivePagedListBuilder(factory, config).build()
-        artistList.observe(fragment, Observer {
-            fragment.showArtistList(it)
-        })
     }
 
     fun searchArtists(query: String) {

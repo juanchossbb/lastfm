@@ -20,7 +20,11 @@ class TrackListFragment : BaseListFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         fragmentTitle.setText(R.string.track_list_fragment_title)
-        viewModel = TrackListViewModel(this)
+        viewModel = TrackListViewModel(this).apply {
+            trackList.observe(requireActivity(), Observer {
+                showTrackList(it)
+            })
+        }
 
         (activity as? ListTabActivity)?.searchLiveData?.observe(viewLifecycleOwner, Observer {
             (recyclerview.adapter as TrackListAdapter).submitList(null)

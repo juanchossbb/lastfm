@@ -10,7 +10,7 @@ import com.google.gson.Gson
  * Time: 10:02 PM
  */
 @Entity(tableName = "artists")
-class Artist : BaseObject() {
+class   Artist : BaseObject() {
 
     companion object {
         private val gson by lazy { Gson() }

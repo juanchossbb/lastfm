@@ -24,9 +24,7 @@ class TrackListViewModel(private val fragment: TrackListFragment) : ViewModel() 
             .setEnablePlaceholders(false)
             .build()
         trackList = LivePagedListBuilder(factory, config).build()
-        trackList.observe(fragment, Observer {
-            fragment.showTrackList(it)
-        })
+
     }
 
     fun searchTracks(query: String) {
