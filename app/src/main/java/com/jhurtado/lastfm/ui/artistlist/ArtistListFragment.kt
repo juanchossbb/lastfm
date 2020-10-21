@@ -19,7 +19,10 @@ class ArtistListFragment : BaseListFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         fragmentTitle.setText(R.string.artist_list_fragment_title)
-        viewModel = ArtistListViewModel(this)
+        viewModel = ArtistListViewModel()
+        (viewModel as ArtistListViewModel).artistList.observe(requireActivity(), Observer {
+            showArtistList(it)
+        })
 
         (activity as? ListTabActivity)?.searchLiveData?.observe(viewLifecycleOwner, Observer {
             (recyclerview.adapter as ArtistListAdapter).submitList(null)
